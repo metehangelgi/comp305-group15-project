@@ -18,7 +18,7 @@ public class Algorithm1 {
 
     public static void main(String[] args){
 
-        File file = new File("inputs/hallelujah_4.txt");
+        File file = new File("inputs/hallelujah_2.txt");
 
         BufferedReader br;
         try {
@@ -89,7 +89,6 @@ public class Algorithm1 {
         } else if(person[0].equals(Character.toString(query.charAt(0)))){
             return checkPerson(people[parseInt(person[1])],query.substring(1));
         }
-
         return 0;
     }
 }
