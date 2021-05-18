@@ -75,7 +75,7 @@ public class Algorithm1_v3 {
     {
         int[] output = new int[numOfQuery];
             for (int x=0; x < numOfQuery; x++) {
-                String TempQuery=query.get(x);
+                String TempQuery=reference[x];
                 for (int i=0; i < calculated_name.size(); i++) {
                     if (calculated_name.get(i).equals(TempQuery)){
                         output[x]=calculated_result.get(i);
