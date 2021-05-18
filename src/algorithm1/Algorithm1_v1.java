@@ -18,7 +18,7 @@ public class Algorithm1_v1 {
 
     public static void main(String[] args){
 
-        File file = new File("inputs/hallelujah_2.txt");
+        File file = new File("inputs/hallelujah_4.txt");
 
         BufferedReader br;
         try {
@@ -46,6 +46,7 @@ public class Algorithm1_v1 {
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
+
         date1=new Date();
         int[] output=EachQuery(numOfQuery);
         for(int i=0;i<output.length;i++){

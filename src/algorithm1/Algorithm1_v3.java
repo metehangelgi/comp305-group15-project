@@ -13,7 +13,7 @@ public class Algorithm1_v3 {
     private static int numOfQuery;
     private static String[][] people;
     private static ArrayList<String> query;
-    private static Integer[] reference;
+    private static String[] reference;
 
     private static ArrayList<String> calculated_name = new ArrayList<>();
     private static ArrayList<Integer> calculated_result = new ArrayList<>();
@@ -52,8 +52,10 @@ public class Algorithm1_v3 {
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
-        // to short our query 
-        Integer[] reference = query.toArray(new Integer[0]);
+        // to short our query
+        //To do:
+        //reference bu şekilde güncelledim, göz atarsın.
+        reference = query.toArray(new String[0]);
         bubblesrt(query);
 
         date1=new Date();
@@ -121,6 +123,8 @@ public class Algorithm1_v3 {
                 if(calculated_name.get(k).equals(TempQuery)){
                     result=calculated_result.get(k);
                     previous=1;
+                    //To do:
+                    //else if index out of bound alıyor
                 }else if((calculated_name.get(k).substring(TempQuery.length()+1)).equals(TempQuery)){
                     // take the longest similar 
                     if(calculated_name.get(similar).length()<calculated_name.get(k).length()){

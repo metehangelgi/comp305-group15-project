@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
-public class Algorithm3 {
+public class Algorithm3_v1 {
 
     static Date date1;
     static Date date2;

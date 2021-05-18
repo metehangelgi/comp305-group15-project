@@ -2,11 +2,12 @@ package algorithm3;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
-public class Algorithm3 {
+public class Algorithm3_v2 {
 
     static Date date1;
     static Date date2;
@@ -34,13 +35,17 @@ public class Algorithm3 {
 
             tree.Create();
 
-            ArrayList<String> calculated_name = new ArrayList<String>();
-            ArrayList<Integer> calculated_result = new ArrayList<Integer>();
+            ArrayList<String> calculated_name = new ArrayList<>();
+            ArrayList<Integer> calculated_result = new ArrayList<>();
             date1 = new Date();
             for (int i = 0; i < testSize; i++) {
                 int previous =0;
                 int result=0;
-                String[] query = scanner.nextLine().split("");
+                //To do:
+                //query burada string değil arraydi, query yi string aldığını varsayıp calculated_name e lineQuery atadım
+                //bu versiyon yine txt 3 için bitmiyor.
+                String lineQuery=scanner.nextLine();
+                String[] query = lineQuery.split("");
                 for(int k = 0; k < calculated_name.size(); k++){
                     if(calculated_name.get(k).equals(query)){
                         result=calculated_result.get(k);
@@ -51,7 +56,7 @@ public class Algorithm3 {
                     System.out.println(result);
                 }else{
                 result=tree.FindQuery(query);
-                calculated_name.add(query);
+                calculated_name.add(lineQuery);
                 calculated_result.add(result);
                 System.out.println(result);
                 }
