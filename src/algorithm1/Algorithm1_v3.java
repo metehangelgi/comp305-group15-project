@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 import static java.lang.Integer.parseInt;
 
-public class Algorithm1 {
+public class Algorithm1_v3 {
 
     private static int numOfPeople;
     private static int numOfQuery;
@@ -15,9 +15,9 @@ public class Algorithm1 {
     private static ArrayList<String> query;
     private static Integer[] reference;
 
-    private static ArrayList<String> calculated_name = new ArrayList<String>();
-    private static ArrayList<Integer> calculated_result = new ArrayList<Integer>();
-    private static ArrayList<ArrayList<Integer> > calculated_position = new ArrayList<ArrayList<Integer> >();
+    private static ArrayList<String> calculated_name = new ArrayList<>();
+    private static ArrayList<Integer> calculated_result = new ArrayList<>();
+    private static ArrayList<ArrayList<Integer> > calculated_position = new ArrayList<>();
 
     static Date date1;
     static Date date2;

@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 import static java.lang.Integer.parseInt;
 
-public class Algorithm1 {
+public class Algorithm1_v2 {
 
     private static int numOfPeople;
     private static int numOfQuery;
