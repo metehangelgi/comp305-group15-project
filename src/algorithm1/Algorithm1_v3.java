@@ -131,14 +131,14 @@ public class Algorithm1_v3 {
             if(previous==1){
                 output[i]=result;
             }else if(similar!=-1){
-                ArrayList<Integer> a2 = new ArrayList<Integer>();
+                ArrayList<Integer> a2;
                 a2=findQuerySome(TempQuery,similar);
                 output[i]=a2.size();
                 calculated_name.add(TempQuery);
                 calculated_result.add(output[i]);
                 calculated_position.add(a2);
             }else{
-                ArrayList<Integer> a1 = new ArrayList<Integer>();
+                ArrayList<Integer> a1;
                 a1=findQuery(TempQuery);
                 output[i]=a1.size();
                 calculated_name.add(TempQuery);
@@ -150,7 +150,7 @@ public class Algorithm1_v3 {
     }
 
     private static ArrayList<Integer>  findQuerySome(String query,int sim) {
-        ArrayList<Integer> position = new ArrayList<Integer>();
+        ArrayList<Integer> position = new ArrayList<>();
         ArrayList<Integer> position_check =calculated_position.get(sim);
         for (Integer i :position_check ){
             String TempQuery=query;
@@ -162,7 +162,7 @@ public class Algorithm1_v3 {
     }
 
     private static ArrayList<Integer>  findQuery(String query) {
-        ArrayList<Integer> position = new ArrayList<Integer>();
+        ArrayList<Integer> position = new ArrayList<>();
         for (int i=1;i<numOfPeople+1;i++){
             String TempQuery=query;
             if(checkPerson(people[i],TempQuery)==1){
