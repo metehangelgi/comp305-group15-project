@@ -61,8 +61,8 @@ public class Algorithm1_v2 {
 
     private static int[] EachQuery(int numOfQuery) {
         int[] output = new int[numOfQuery];
-        ArrayList<String> calculated_name = new ArrayList<String>();
-        ArrayList<Integer> calculated_result = new ArrayList<Integer>();
+        ArrayList<String> calculated_name = new ArrayList<>();
+        ArrayList<Integer> calculated_result = new ArrayList<>();
         for (int i=0;i<numOfQuery;i++){
             String TempQuery=query.get(i);
             int result=0;
@@ -71,6 +71,7 @@ public class Algorithm1_v2 {
                 if(calculated_name.get(k).equals(TempQuery)){
                     result=calculated_result.get(k);
                     previous=1;
+                    break;
                 }
             }
             if(previous==1){

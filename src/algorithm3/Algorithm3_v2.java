@@ -16,7 +16,7 @@ public class Algorithm3_v2 {
         Tree tree = new Tree();
 
         try {
-            File file = new File("inputs/hallelujah_4.txt");
+            File file = new File("inputs/hallelujah_3.txt");
             Scanner scanner = new Scanner(file);
 
             String info = scanner.nextLine();
@@ -50,6 +50,7 @@ public class Algorithm3_v2 {
                     if(calculated_name.get(k).equals(query)){
                         result=calculated_result.get(k);
                         previous=1;
+                        break;
                     }
                 }
                 if(previous==1){

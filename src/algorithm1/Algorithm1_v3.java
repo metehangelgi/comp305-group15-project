@@ -73,20 +73,19 @@ public class Algorithm1_v3 {
 
     }
     // return order
-    public static int[] rotate(int numOfQuery)
-    {
+    public static int[] rotate(int numOfQuery) {
         int[] output = new int[numOfQuery];
-            for (int x=0; x < numOfQuery; x++) {
-                String TempQuery=reference[x];
-                for (int i=0; i < calculated_name.size(); i++) {
-                    if (calculated_name.get(i).equals(TempQuery)){
-                        output[x]=calculated_result.get(i);
-                    }
+        for (int x=0; x < numOfQuery; x++) {
+            String TempQuery=reference[x];
+            for (int i=0; i < calculated_name.size(); i++) {
+                if (calculated_name.get(i).equals(TempQuery)){
+                    output[x]=calculated_result.get(i);
                 }
             }
-                return output;
+        }
+        return output;
     }
-// buble short
+    // bubble sort
     public static void bubblesrt(ArrayList<String> list)
     {
         String temp;
