@@ -59,10 +59,6 @@ public class Algorithm1_v3 {
         bubblesrt(query);
 
         date1=new Date();
-        //To do:
-        //burada işlenen output alınmıyor?
-        //galiba önce hepsini calculated_name atayıp sonra rotate ile bir kere daha alıyorsun.
-        //run ettikten sonra push yap.
         
         EachQuery(numOfQuery);
         int[] output=rotate(numOfQuery);
@@ -135,7 +131,9 @@ public class Algorithm1_v3 {
                 }else if(differen>0){
                     if(calculated_name.get(k).substring(differen).equals(TempQuery)){
                          // take the longest similar 
-                         if(calculated_name.get(similar).length()<calculated_name.get(k).length()){
+                        if(similar == -1){
+                            similar = k;
+                        }else if(calculated_name.get(similar).length()<calculated_name.get(k).length()){
                             similar =k;
                          }
                     }
