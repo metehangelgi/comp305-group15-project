@@ -10,17 +10,21 @@ public class GenericTree {
 
         String key;
         int parentIndex;
-        //Letter letter;
+        Letter letter;
         Node parent = null;
         List<Node> children;
 
         public Node(int index, String key, int parentIndex) {
             this.index = index;
             this.key = key;
-            //letter=new Letter(key.toCharArray()[0]);
+            letter=new Letter(key.toCharArray()[0]);
             this.parentIndex = parentIndex;
 
             children = new ArrayList<>();
+        }
+
+        public Letter getLetter(){
+            return letter;
         }
 
         public void AddChild(Node child) {
@@ -31,10 +35,10 @@ public class GenericTree {
 
     Node root;
     List<Node> nodes;
-
-    GenericTree() {
+    DataStructure dataStructure;
+    GenericTree(DataStructure dataStructure) {
         nodes = new ArrayList<>();
-
+        this.dataStructure=dataStructure;
         // Imaginary father, first father
         root = new Node(0, "-", -1);
         nodes.add(root);
@@ -54,6 +58,11 @@ public class GenericTree {
             if (node.parentIndex != -1) {
                 node.parent = nodes.get(node.parentIndex); // O(1)
                 nodes.get(node.parentIndex).AddChild(node); // O(1)
+                if(node.parentIndex==0){
+                    dataStructure.addElement(node.letter,null);
+                }else {
+                    dataStructure.addElement(node.letter,node.parent.letter);
+                }
             }
         }
     }
