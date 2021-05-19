@@ -10,6 +10,7 @@ public class Algorithm3_v1 {
 
     static Date date1;
     static Date date2;
+    static Date date3;
 
     public static void main(String[] args) {
         Tree tree = new Tree();
@@ -35,14 +36,21 @@ public class Algorithm3_v1 {
             tree.Create();
 
             date1 = new Date();
+            Integer[] output=new Integer[testSize];
             for (int i = 0; i < testSize; i++) {
                 String[] query = scanner.nextLine().split("");
-                System.out.println(tree.FindQuery(query));
+                output[i]=tree.FindQuery(query);
             }
-
             date2 = new Date();
             long dif = date2.getTime() - date1.getTime();
-            System.out.println("time needed in miliseconds: " + dif);
+            for(int i=0;i<output.length;i++){
+                System.out.println(output[i]);
+            }
+            date3=new Date();
+            long dif2=date3.getTime()-date2.getTime();
+            System.out.println("\ntime needed in miliseconds: "+dif);
+            System.out.println("time needed in miliseconds for print: "+dif2);
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

@@ -115,9 +115,7 @@ class Tree {
             return false;
 
         String[] newQuery = new String[query.length - 1];
-        for (int i = 0; i < newQuery.length; i++) {
-            newQuery[i] = query[i + 1];
-        }
+        System.arraycopy(query, 0, newQuery, 0, newQuery.length);
 
         if (node.key.equals(newQuery[0])) {
             if (newQuery.length == 1) {
