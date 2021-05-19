@@ -23,9 +23,11 @@ public class Algorithm1_v3 {
     static Date date2;
     static Date date3;
 
+    static StringBuilder str;
+
     public static void main(String[] args){
 
-        File file = new File("inputs/hallelujah_4.txt");
+        File file = new File("inputs/hallelujah_3.txt");
 
         BufferedReader br;
         try {
@@ -61,14 +63,11 @@ public class Algorithm1_v3 {
         date1=new Date();
         
         EachQuery(numOfQuery);
-        int[] output=rotate(numOfQuery);
+        rotate(numOfQuery);
 
         date2=new Date();
         long dif=date2.getTime()-date1.getTime();
-        for(int i=0;i<output.length;i++){
-            System.out.println(output[i]);
-        }
-
+        System.out.println(str.toString());
         date3=new Date();
         long dif2=date3.getTime()-date2.getTime();
         System.out.println("\ntime needed in miliseconds: "+dif);
@@ -78,12 +77,14 @@ public class Algorithm1_v3 {
     }
     // return order
     public static int[] rotate(int numOfQuery) {
+        str = new StringBuilder();
         int[] output = new int[numOfQuery];
         for (int x=0; x < numOfQuery; x++) {
             String TempQuery=reference[x];
             for (int i=0; i < calculated_name.size(); i++) {
                 if (calculated_name.get(i).equals(TempQuery)){
                     output[x]=calculated_result.get(i);
+                    str.append(calculated_result.get(i)).append("\n");
                 }
             }
         }
@@ -122,7 +123,7 @@ public class Algorithm1_v3 {
             int result=0;
             int previous =0;
             int similar=-1;
-            int differen=0;
+            int differen;
             for(int k = 0; k < calculated_name.size(); k++){
                 differen=calculated_name.get(k).length()-TempQuery.length();
                 if(calculated_name.get(k).equals(TempQuery)){
