@@ -15,6 +15,7 @@ public class Algorithm2 {
     private static ArrayList<String> query;
     static Date date1;
     static Date date2;
+    static Date date3;
 
     public static void main(String[] args) {
 
@@ -52,15 +53,18 @@ public class Algorithm2 {
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
+
         date1=new Date();
         int[] output=EachQuery(numOfQuery);
+        date2=new Date();
+        long dif=date2.getTime()-date1.getTime();
         for(int i=0;i<output.length;i++){
             System.out.println(output[i]);
         }
-        date2=new Date();
-        long dif=date2.getTime()-date1.getTime();
-        //long seconds = TimeUnit.MILLISECONDS.toSeconds(dif);
-        System.out.println("time needed in miliseconds: "+dif);
+        date3=new Date();
+        long dif2=date3.getTime()-date2.getTime();
+        System.out.println("\ntime needed in miliseconds: "+dif);
+        System.out.println("time needed in miliseconds for print: "+dif2);
 
 
     }
