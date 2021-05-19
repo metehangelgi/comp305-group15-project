@@ -72,8 +72,8 @@ public class Algorithm4_v1 {
 
         long dif=date2.getTime()-date1.getTime();
         long dif2=date3.getTime()-date2.getTime();
-        System.out.println("Time Diff: "+dif);
-        System.out.println("Time Diff for print: "+dif2);
+        System.out.println("time needed in miliseconds: "+dif);
+        System.out.println("time needed in miliseconds for print: "+dif2);
     }
 }
 
