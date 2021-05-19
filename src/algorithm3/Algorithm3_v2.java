@@ -12,12 +12,13 @@ public class Algorithm3_v2 {
     static Date date1;
     static Date date2;
     static Date date3;
+    static StringBuilder str;
 
     public static void main(String[] args) {
         Tree tree = new Tree();
 
         try {
-            File file = new File("inputs/hallelujah_3.txt");
+            File file = new File("inputs/hallelujah_4.txt");
             Scanner scanner = new Scanner(file);
 
             String info = scanner.nextLine();
@@ -35,10 +36,10 @@ public class Algorithm3_v2 {
             }
 
             tree.Create();
+            str=new StringBuilder();
 
             ArrayList<String> calculated_name = new ArrayList<>();
             ArrayList<Integer> calculated_result = new ArrayList<>();
-            Integer[] output=new Integer[testSize];
             date1 = new Date();
             for (int i = 0; i < testSize; i++) {
                 int previous=0;
@@ -52,19 +53,19 @@ public class Algorithm3_v2 {
                         break;
                     }
                 }
-                if(previous==0){
+                if(previous==1){
+                    str.append(result).append("\n");
+                }else{
                     result=tree.FindQuery(query);
+                    str.append(result).append("\n");
                     calculated_name.add(lineQuery);
                     calculated_result.add(result);
                 }
-                output[i]=result;
             }
 
             date2 = new Date();
             long dif = date2.getTime() - date1.getTime();
-            for(int i=0;i<output.length;i++){
-                System.out.println(output[i]);
-            }
+            System.out.println(str.toString());
             date3=new Date();
             long dif2=date3.getTime()-date2.getTime();
             System.out.println("\ntime needed in miliseconds: "+dif);

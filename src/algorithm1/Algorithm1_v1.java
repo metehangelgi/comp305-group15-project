@@ -16,6 +16,7 @@ public class Algorithm1_v1 {
     static Date date1;
     static Date date2;
     static Date date3;
+    static StringBuilder str;
 
     public static void main(String[] args){
 
@@ -49,12 +50,11 @@ public class Algorithm1_v1 {
         }
 
         date1=new Date();
-        int[] output=EachQuery(numOfQuery);
+        //int[] output=EachQuery(numOfQuery);
+        EachQuery(numOfQuery);
         date2=new Date();
         long dif=date2.getTime()-date1.getTime();
-        for(int i=0;i<output.length;i++){
-            System.out.println(output[i]);
-        }
+        System.out.println(str.toString());
         date3=new Date();
         long dif2=date3.getTime()-date2.getTime();
         System.out.println("\ntime needed in miliseconds: "+dif);
@@ -63,14 +63,14 @@ public class Algorithm1_v1 {
 
     }
 
-    private static int[] EachQuery(int numOfQuery) {
-        int[] output = new int[numOfQuery];
+    private static void EachQuery(int numOfQuery) {
+        str=new StringBuilder();
         for (int i=0;i<numOfQuery;i++){
             String TempQuery=query.get(i);
-            output[i]=findQuery(TempQuery);
+            int result=findQuery(TempQuery);
+            str.append(result).append("\n");
         }
 
-        return output;
     }
 
     private static int findQuery(String query) {

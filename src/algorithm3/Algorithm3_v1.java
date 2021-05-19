@@ -11,6 +11,7 @@ public class Algorithm3_v1 {
     static Date date1;
     static Date date2;
     static Date date3;
+    static StringBuilder str;
 
     public static void main(String[] args) {
         Tree tree = new Tree();
@@ -34,18 +35,16 @@ public class Algorithm3_v1 {
             }
 
             tree.Create();
-
+            str=new StringBuilder();
             date1 = new Date();
-            Integer[] output=new Integer[testSize];
             for (int i = 0; i < testSize; i++) {
                 String[] query = scanner.nextLine().split("");
-                output[i]=tree.FindQuery(query);
+                Integer result=tree.FindQuery(query);
+                str.append(result).append("\n");
             }
             date2 = new Date();
             long dif = date2.getTime() - date1.getTime();
-            for(int i=0;i<output.length;i++){
-                System.out.println(output[i]);
-            }
+            System.out.println(str.toString());
             date3=new Date();
             long dif2=date3.getTime()-date2.getTime();
             System.out.println("\ntime needed in miliseconds: "+dif);

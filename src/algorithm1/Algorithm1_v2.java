@@ -16,10 +16,11 @@ public class Algorithm1_v2 {
     static Date date1;
     static Date date2;
     static Date date3;
+    static StringBuilder str;
 
     public static void main(String[] args){
 
-        File file = new File("inputs/hallelujah_4.txt");
+        File file = new File("inputs/hallelujah_3.txt");
 
         BufferedReader br;
         try {
@@ -48,12 +49,10 @@ public class Algorithm1_v2 {
             ioException.printStackTrace();
         }
         date1=new Date();
-        int[] output=EachQuery(numOfQuery);
+        EachQuery(numOfQuery);
         date2=new Date();
         long dif=date2.getTime()-date1.getTime();
-        for(int i=0;i<output.length;i++){
-            System.out.println(output[i]);
-        }
+        System.out.println(str.toString());
         date3=new Date();
         long dif2=date3.getTime()-date2.getTime();
         System.out.println("\ntime needed in miliseconds: "+dif);
@@ -62,8 +61,8 @@ public class Algorithm1_v2 {
 
     }
 
-    private static int[] EachQuery(int numOfQuery) {
-        int[] output = new int[numOfQuery];
+    private static void EachQuery(int numOfQuery) {
+        str=new StringBuilder();
         ArrayList<String> calculated_name = new ArrayList<>();
         ArrayList<Integer> calculated_result = new ArrayList<>();
         for (int i=0;i<numOfQuery;i++){
@@ -78,14 +77,14 @@ public class Algorithm1_v2 {
                 }
             }
             if(previous==1){
-                output[i]=result;
+                str.append(result).append("\n");
             }else{
-                output[i]=findQuery(TempQuery);
+                result=findQuery(TempQuery);
+                str.append(result).append("\n");
                 calculated_name.add(TempQuery);
-                calculated_result.add(output[i]);
+                calculated_result.add(result);
             }
         }
-        return output;
     }
 
     private static int findQuery(String query) {
