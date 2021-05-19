@@ -13,7 +13,7 @@ public class Algorithm4_v1 {
         HashMap<String,AugmentedArrayList> queryMap2=new HashMap<>();
         StringBuilder str;
         try {
-            File file = new File("inputs/hallelujah_4.txt");
+            File file = new File("inputs/hallelujah_3.txt");
             Scanner scanner = new Scanner(file);
 
             String info = scanner.nextLine();
