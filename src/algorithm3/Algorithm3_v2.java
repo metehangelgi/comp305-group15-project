@@ -43,9 +43,6 @@ public class Algorithm3_v2 {
             for (int i = 0; i < testSize; i++) {
                 int previous=0;
                 int result=0;
-                //To do:
-                //query burada string değil arraydi, query yi string aldığını varsayıp calculated_name e lineQuery atadım
-                //bu versiyon yine txt 3 için bitmiyor.
                 String lineQuery=scanner.nextLine();
                 String[] query = lineQuery.split("");
                 for(int k = 0; k < calculated_name.size(); k++){

@@ -21,6 +21,7 @@ public class Algorithm1_v3 {
 
     static Date date1;
     static Date date2;
+    static Date date3;
 
     public static void main(String[] args){
 
@@ -36,6 +37,7 @@ public class Algorithm1_v3 {
             numOfQuery=parseInt(line[1]);
             people= new String[numOfPeople+1][2];
             query = new ArrayList<>();
+            reference=new String[numOfQuery];
             people[0]=null;
             for (int i=1;i<numOfPeople+1;i++){
                 st = br.readLine();
@@ -46,29 +48,34 @@ public class Algorithm1_v3 {
             for (int i=0;i<numOfQuery;i++){
                 st = br.readLine();
                 query.add(i,st);
+                reference[i]=st;
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
-        // to short our query
-        //To do:
-        //reference bu şekilde güncelledim, göz atarsın.
-        reference = query.toArray(new String[0]);
+        // to sort our query
         bubblesrt(query);
 
         date1=new Date();
+        //To do:
+        //burada işlenen output alınmıyor?
+        //galiba önce hepsini calculated_name atayıp sonra rotate ile bir kere daha alıyorsun.
+        //run ettikten sonra push yap.
         EachQuery(numOfQuery);
         int[] output=rotate(numOfQuery);
 
+        date2=new Date();
+        long dif=date2.getTime()-date1.getTime();
         for(int i=0;i<output.length;i++){
             System.out.println(output[i]);
         }
-        date2=new Date();
-        long dif=date2.getTime()-date1.getTime();
-        //long seconds = TimeUnit.MILLISECONDS.toSeconds(dif);
-        System.out.println("time needed in miliseconds: "+dif);
+
+        date3=new Date();
+        long dif2=date3.getTime()-date2.getTime();
+        System.out.println("\ntime needed in miliseconds: "+dif);
+        System.out.println("time needed in miliseconds for print: "+dif2);
 
 
     }
