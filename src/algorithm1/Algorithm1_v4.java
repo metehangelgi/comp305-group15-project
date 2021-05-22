@@ -56,8 +56,6 @@ public class Algorithm1_v4 {
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
-        // to sort our query
-        //bubblesrt(query);
 
         date1=new Date();
         EachQuery(numOfQuery);
