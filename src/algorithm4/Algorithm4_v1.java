@@ -1,36 +1,36 @@
 package algorithm4;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.*;
 
 public class Algorithm4_v1 {
     public static void main(String[] args) {
+        long wholeProcessStartTime=System.currentTimeMillis();
         DataStructure dataStructure=new DataStructure();
         GenericTree tree = new GenericTree(dataStructure);
         ArrayList<String> queries=new ArrayList<>();
         HashMap<String,Integer> queryMap=new HashMap<>();
         HashMap<String,AugmentedArrayList> queryMap2=new HashMap<>();
-        StringBuilder str;
+        StringBuilder stringBuilder=new StringBuilder();
         try {
-            File file = new File("inputs/hallelujah_3.txt");
-            Scanner scanner = new Scanner(file);
-
-            String info = scanner.nextLine();
+            File file = new File("inputs/hallelujah_4.txt");
+            BufferedReader bufferedReader=new BufferedReader(new FileReader(file));
+            String info = bufferedReader.readLine();
 
             StringTokenizer st = new StringTokenizer(info);
             int dataSize = Integer.parseInt(st.nextToken());
             int testSize = Integer.parseInt(st.nextToken());
 
             for (int i = 1; i <= dataSize; i++) {
-                st = new StringTokenizer(scanner.nextLine());
+                st = new StringTokenizer(bufferedReader.readLine());
                 String key = st.nextToken();
                 int parentIndex = Integer.parseInt(st.nextToken());
                 tree.AddNode(i, key, parentIndex);
             }
             tree.Create();
+            tree=null;
             for (int i = dataSize; i < dataSize + testSize; i++) {
-                st = new StringTokenizer(scanner.nextLine());
+                st = new StringTokenizer(bufferedReader.readLine());
                 String key = st.nextToken();
                 queryMap.putIfAbsent(key,-1);
                 if(!queryMap2.containsKey(key)){
@@ -48,14 +48,14 @@ public class Algorithm4_v1 {
                 }
                 queries.add(key);
             }
-        } catch (FileNotFoundException e) {
+            bufferedReader.close();
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        str=new StringBuilder();
-        Date date1=new Date();
+        long searchTimeStart=System.currentTimeMillis();
         for (int i = 0; i < queries.size(); i++) {
             String key=queries.get(i);
-            int result;
+            int result=0;
             int queryMemo=queryMap.get(key);
             if(queryMemo!=-1){
                 result=queryMemo;
@@ -63,17 +63,17 @@ public class Algorithm4_v1 {
                 result=dataStructure.search(queryMap2.get(key));
                 queryMap.put(key,result);
             }
-            str.append(result).append("\n");
+            stringBuilder.append(result).append("\n");
         }
-        Date date2=new Date();
-        System.out.println(str);
-        Date date3=new Date();
+        long searchTimeEnd=System.currentTimeMillis();
+        long printTimeStart=System.currentTimeMillis();
+        System.out.println(stringBuilder);
+        long printTimeEnd=System.currentTimeMillis();
+        long wholeProcessEndTime=System.currentTimeMillis();
 
-
-        long dif=date2.getTime()-date1.getTime();
-        long dif2=date3.getTime()-date2.getTime();
-        System.out.println("time needed in miliseconds: "+dif);
-        System.out.println("time needed in miliseconds for print: "+dif2);
+        System.out.println("Whole process time: "+(wholeProcessEndTime-wholeProcessStartTime));
+        System.out.println("Searching time: "+(searchTimeEnd-searchTimeStart));
+        System.out.println("Printing time: "+(printTimeEnd-printTimeStart));
     }
 }
 
@@ -141,8 +141,8 @@ class DataStructure{
         if(query.size()==1){
             return informationLinkedList.size();
         }
+
         for (Information info : informationLinkedList) {
-            //System.out.println(info);
             if(info.getLength()<query.size()||firstElementInQuery.getChecksum()> info.getTotalChecksum()
                     ||(info.getLength()==query.size() && info.getTotalChecksum()!=firstElementInQuery.getChecksum())) {
                 continue;
@@ -150,89 +150,64 @@ class DataStructure{
             AugmentedArrayList currentAugmentedList=lists.get(info.getGPos());
             int currentQueryPos= query.size()-1;
             int LPos=info.getLPos();
-            Letter currentLetter = null;
+            Letter currentLetter;
             Letter currentQueryElement;
             boolean isAppropriate=true;
             while (currentQueryPos>=0){
                 int lowerBound=Math.max(0,LPos-(currentQueryPos+1));
                 int lowerQuery=currentQueryPos-(LPos-lowerBound);
-                //System.out.println(info+" "+LPos+" "+lowerBound+" "+lowerQuery);
                 if(!checksumControl(currentAugmentedList,query,LPos,lowerBound,currentQueryPos,lowerQuery, currentAugmentedList.getJumping())){
                     isAppropriate=false;
-                    //System.out.println("Here");
                     break;
                 }
-                //System.out.println("here");
                 int endPos=lowerBound==0?-1:lowerBound;
-                //System.out.println("Lower Bound: "+lowerBound);
                 for (int i = LPos, j=currentQueryPos; i >endPos&&currentQueryPos>=0 ; i--,j--) {
                     currentLetter=currentAugmentedList.get(i);
                     currentQueryElement=query.get(j);
-                    //System.out.println("EndPos: "+endPos);
-                    //System.out.println(currentLetter.getValue()+" "+currentQueryElement.getValue());
                     if(currentLetter.getValue()!=currentQueryElement.getValue()){
                         isAppropriate=false;
                         break;
                     }
                     currentQueryPos--;
-                    //System.out.println("CurrentQueryPos2: "+currentQueryPos);
                 }
                 if(!isAppropriate){
                     break;
                 }
-                //System.out.println(currentAugmentedList.getJumping());
                 if(lowerQuery<0||currentAugmentedList.getJumping()==-1){
-                    //System.out.println("Here");
                     break;
                 }
-                //System.out.println(lowerQuery+" CurrentQueryPos:"+currentQueryPos);
-                //currentQueryPos-=lowerQuery;
-
                 LPos=currentAugmentedList.getShifting()-1;
                 currentAugmentedList=lists.get(currentAugmentedList.getJumping());
-                //System.out.println(currentQueryPos);
             }
-            //System.out.println(currentLetter.getValue());
             if(isAppropriate){
-                //System.out.println(info+" Here");
                 counter++;
             }
-
         }
         return counter;
     }
+
     public boolean checksumControl(AugmentedArrayList current,ArrayList<Letter> query,int LPos,int lowerBound,int currentQueryPos,int lowerQuery,int jumping){
         int checksumOfQuery;
         int checksumOfFamily;
-        //System.out.println(LPos+" "+lowerBound+" "+currentQueryPos+" "+lowerQuery+" ");
 
         if(LPos>currentQueryPos){
-            //System.out.println(lowerQuery+" Lower "+currentQueryPos);
-
             checksumOfQuery=query.get(currentQueryPos).getChecksum();
             checksumOfFamily=current.get(LPos).getChecksum()-current.get(lowerBound).getChecksum();
         }
         else if(LPos==currentQueryPos&&jumping==-1){
             checksumOfQuery=query.get(currentQueryPos).getChecksum();
             checksumOfFamily=current.get(LPos).getChecksum();
-            //System.out.println("Equal");
         } else {
-            checksumOfQuery=
-                    query.get(currentQueryPos).getChecksum()-
-                            query.get(lowerQuery).getChecksum();
+            checksumOfQuery= query.get(currentQueryPos).getChecksum()-query.get(lowerQuery).getChecksum();
             checksumOfFamily=current.get(LPos).getChecksum()-current.get(lowerBound).getChecksum();
         }
-
-        //System.out.println(checksumOfQuery+" "+checksumOfFamily);
         return checksumOfQuery==checksumOfFamily;
     }
 }
 
-
 class AugmentedArrayList extends ArrayList<Letter>{
     private int jumping;
     private int shifting;
-    private String query;
 
     public AugmentedArrayList(){
         jumping=-1;
@@ -253,14 +228,6 @@ class AugmentedArrayList extends ArrayList<Letter>{
 
     public void setShifting(int shifting) {
         this.shifting = shifting;
-    }
-
-    public String getQuery() {
-        return query;
-    }
-
-    public void setQuery(String query) {
-        this.query = query;
     }
 }
 

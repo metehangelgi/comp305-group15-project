@@ -36,7 +36,7 @@ public class GenericTree {
     Node root;
     List<Node> nodes;
     DataStructure dataStructure;
-    GenericTree(DataStructure dataStructure) {
+    public GenericTree(DataStructure dataStructure) {
         nodes = new ArrayList<>();
         this.dataStructure=dataStructure;
         // Imaginary father, first father
@@ -45,7 +45,7 @@ public class GenericTree {
     }
 
     // O(n)
-    void AddNode(int index, String key, int parentIndex) {
+    public void AddNode(int index, String key, int parentIndex) {
         Node node = new Node(index, key, parentIndex);
         nodes.add(node);
     }
