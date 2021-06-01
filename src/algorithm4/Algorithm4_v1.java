@@ -3,6 +3,7 @@ package algorithm4;
 import java.io.*;
 import java.util.*;
 
+
 public class Algorithm4_v1 {
     public static void main(String[] args) {
         long wholeProcessStartTime=System.currentTimeMillis();
