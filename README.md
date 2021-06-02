@@ -37,8 +37,6 @@ We store the checksum so we can find the discrepancy between query and name rapi
 
 ### What are the results: 
 
-Note: hallelujah_3 and hallelujah_4 outputs too long to put here and run times added into presentation hence does not included here. 
-
 **Algorithms designed as:** *(All algorithms explained in presentation)* \
 v1- without memoization \
 v2- check just same query \
@@ -91,6 +89,8 @@ Algorithm3 v1|4ms|1ms
 Algorithm3 v2|3ms|1ms
 Algorithm4(Final Algorithm) |1ms|1ms
 
+
+Note: hallelujah_3 and hallelujah_4 outputs too long to put here, hence does not included here. 
 
 ##### ----------hallelujah_3.txt----------
 	
