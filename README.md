@@ -3,7 +3,7 @@
 ### How to Run
 
 Code is written on java, using IntelliJ. If you have IntelliJ you can run directly from configuration. 
-If you use Eclipse or other IDE, you can create different project on your computer system and copy src file into yours and run it.
+If you use Eclipse or other IDE, you can create different project on your computer and replace src folder with your new project and run algorithms one by one.
 
 ### Summary of Project Problem:
 
