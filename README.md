@@ -45,7 +45,7 @@ v2- check just same query \
 v3- check the similar query \
 v4 - check the similar query without sorting
 
-##### -hallelujah_1.txt-
+##### ----------hallelujah_1.txt----------
 
 *Output:* |
 ------------|
@@ -67,7 +67,7 @@ Algorithm3 v2|1ms|0ms
 Algorithm4(Final Algorithm) |0ms|0ms
 
 
-##### -hallelujah_2.txt-
+##### ----------hallelujah_2.txt----------
 
 
 *Output:* |
@@ -91,6 +91,35 @@ Algorithm3 v1|4ms|1ms
 Algorithm3 v2|3ms|1ms
 Algorithm4(Final Algorithm) |1ms|1ms
 
+
+##### ----------hallelujah_3.txt----------
+	
+
+**Algorithm** | **Search** | **Print**
+------------ | ------------ | ------------ 
+Algorithm1 v1|-|-
+Algorithm1 v2|112ms|426ms
+Algorithm1 v3|439ms|910ms
+Algorithm1 v4|316ms|868ms
+Algorithm2 |-|-
+Algorithm3 v1|-|-
+Algorithm3 v2|1102ms|899ms
+Algorithm4(Final Algorithm) |88ms|560ms
+
+
+##### ----------hallelujah_4.txt----------
+	
+
+**Algorithm** | **Search** | **Print**
+------------ | ------------ | ------------ 
+Algorithm1 v1|169ms|0ms
+Algorithm1 v2|179ms|1ms
+Algorithm1 v3|733ms|0ms
+Algorithm1 v4|517ms|0ms
+Algorithm2 |360ms|0ms
+Algorithm3 v1|149ms|0ms
+Algorithm3 v2|475ms|0ms
+Algorithm4(Final Algorithm) |124ms|0ms
 
 
 
