@@ -7,7 +7,7 @@ If you use Eclipse or other IDE, you can create different project on your comput
 
 ### Summary of Project Problem:
 
-Therese is input files named: hallelujah. \
+There is input files named: hallelujah \
 _10 5 \
 S 0 \
 Y 1 \
