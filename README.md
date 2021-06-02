@@ -7,7 +7,7 @@ If you use Eclipse or other IDE, you can create different project on your comput
 
 ### Summary of Project Problem:
 
-Therese is input files named: hallelujah. 
+Therese is input files named: hallelujah. \
 _10 5 \
 S 0 \
 Y 1 \
@@ -20,7 +20,7 @@ First line is the number of people in the community and number of queries. Follo
 Given these information about the names of whole community, and a given query; find the number of people who have the query as a prefix in their name. Provide the most efficient algorithm as we can. 
 
 
-### How does Final Algorithm Work:
+### How does Final Algorithm(Algorithm4) Work:
 
 For this solution, we use a new data structure. The motivation of this data structure is using both ArrayList and HashMap data structures in order to acquire a tree model. This data structure simulates linked based tree but this data structure is more appropriate for our task.  
 This data structure contains one global ArrayList which contains local ArrayLists and one hashmap. Each local ArrayList has two parameters which are jumping and shifting. Jumping means that which local ArrayList is parent of current one and shifting means that in which position of the ArrayList our parent sequence starts. We add the global and local positions to the HashMap. It will make the search faster. Note that local ArrayLists contain Letter class which includes character, checksum and length.
