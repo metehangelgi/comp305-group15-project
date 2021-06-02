@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.*;
 
 
-public class Algorithm4_v1 {
+public class Algorithm4 {
     public static void main(String[] args) {
         long wholeProcessStartTime=System.currentTimeMillis();
         DataStructure dataStructure=new DataStructure();
@@ -14,7 +14,7 @@ public class Algorithm4_v1 {
         HashMap<String,AugmentedArrayList> queryMap2=new HashMap<>();
         StringBuilder stringBuilder=new StringBuilder();
         try {
-            File file = new File("inputs/hallelujah_4.txt");
+            File file = new File("inputs/hallelujah_2.txt");
             BufferedReader bufferedReader=new BufferedReader(new FileReader(file));
             String info = bufferedReader.readLine();
 

@@ -26,7 +26,7 @@ public class Algorithm1_v4 {
 
     public static void main(String[] args){
 
-        File file = new File("inputs/hallelujah_3.txt");
+        File file = new File("inputs/hallelujah_4.txt");
 
         BufferedReader br;
         try {
